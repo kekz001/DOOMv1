@@ -1,6 +1,7 @@
 import pygame as pg
 import sys
 from settings import *
+from mapGame import *
 
 class Game:
     def __init__(self):
@@ -8,9 +9,10 @@ class Game:
         pg.init()
         self.screen = pg.display.set_mode(RES)
         self.clock = pg.time.Clock()
+        self.new_game()
 
     def new_game(self):
-        pass
+        self.map = Map(self)
 
     #Atualização da tela para mostrar os FPS
     def update(self):
@@ -21,6 +23,7 @@ class Game:
     #A cada interação pintar a tela de preto
     def draw(self):
         self.screen.fill('black')
+        self.map.draw()
     
     #Checar eventos por ex se apertamos a tecla ESC para sair do game
     def check_events(self):
